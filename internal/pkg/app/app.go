@@ -26,7 +26,9 @@ func New() (*App, error) {
 
 	a.echo.Use(middleware.ChekUser)
 
-	a.echo.GET("/status", a.e.Status)
+	a.echo.GET("/", nil)
+	a.echo.GET("/fibonacci/:number", a.e.Fibonacci).Name = "number"
+	a.echo.GET("/time-moscow", a.e.TimeInMoscow)
 
 	return a, nil
 
